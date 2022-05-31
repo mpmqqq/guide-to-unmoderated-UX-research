@@ -1,4 +1,3 @@
-# yatube/settings.py
 """
 Django settings for yatube project.
 

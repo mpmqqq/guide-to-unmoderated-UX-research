@@ -1,6 +1,7 @@
-# posts/models.py
 from django.db import models
+
 from django.contrib import admin
+
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -28,23 +29,8 @@ class Post(models.Model):
         blank=True,
         null=True,
         on_delete=models.SET_NULL,
-        related_name='group_posts'
+        related_name='posts'
     )
-
-
-class Meta:
-    ordering = [('-pub_date')[:10], 'author']
-
-
-class PostAdmin(admin.ModelAdmin):
-    list_display = (
-        'pk',
-        'text',
-        'pub_date',
-        'author',
-        'group',
-    )
-    list_editable = ('group',)
-    search_fields = ('text',)
-    list_filter = ('pub_date',)
-    empty_value_display = '-пусто-'
+    
+    class Meta:
+        ordering = ['-pub_date', 'author']
