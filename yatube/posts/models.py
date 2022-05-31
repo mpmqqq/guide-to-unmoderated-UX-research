@@ -1,7 +1,5 @@
 from django.db import models
 
-from django.contrib import admin
-
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -31,6 +29,6 @@ class Post(models.Model):
         on_delete=models.SET_NULL,
         related_name='posts'
     )
-    
+
     class Meta:
         ordering = ['-pub_date', 'author']
