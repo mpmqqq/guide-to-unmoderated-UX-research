@@ -1,12 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 
-from hw02_community.yatube.yatube.settings import MAX_POST_ON_PAGE
+from django.conf import settings
 
 from .models import Post, Group
 
 
+
 def index(request):
-    posts = Post.objects.all()[:MAX_POST_ON_PAGE]
+    posts = Post.objects.all()[:settings.MAX_POST_ON_PAGE]
     context = {
         'posts': posts,
     }
@@ -15,7 +16,7 @@ def index(request):
 
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    posts = Post.objects.filter(group=group).all()[:MAX_POST_ON_PAGE]
+    posts = Post.objects.filter(group=group).all()[:settings.MAX_POST_ON_PAGE]
     context = {
         'group': group,
         'posts': posts,
