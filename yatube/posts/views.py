@@ -5,7 +5,6 @@ from django.conf import settings
 from .models import Post, Group
 
 
-
 def index(request):
     posts = Post.objects.all()[:settings.MAX_POST_ON_PAGE]
     context = {
